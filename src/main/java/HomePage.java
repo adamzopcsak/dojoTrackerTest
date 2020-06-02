@@ -6,7 +6,7 @@ public class HomePage extends Page {
     public HomePage(WebDriver driver) {
         super(driver);
     }
-    
+
     public void load() {
         driver.get(baseUrl);
     }

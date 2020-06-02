@@ -11,6 +11,7 @@ public class BaseTest {
     protected String username;
     protected String password;
     protected ChromeDriver driver;
+    protected HomePage homePage;
 
     @BeforeAll
     public void setupTestEnvironment() {
