@@ -18,7 +18,7 @@ public class BaseTest {
 
     @BeforeEach
     public void initDriver() {
-        
+
     }
 
 }
