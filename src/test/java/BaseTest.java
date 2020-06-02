@@ -1,3 +1,5 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
@@ -18,7 +20,13 @@ public class BaseTest {
 
     @BeforeEach
     public void initDriver() {
+        WebDriverManager.chromedriver().setup();
+        this.driver = new ChromeDriver();
+    }
 
+    @AfterEach
+    public void quitDriver() {
+        driver.quit();
     }
 
 }
