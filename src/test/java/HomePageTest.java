@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,12 +12,8 @@ public class HomePageTest extends BaseTest {
 
     @Test
     public void loginTest() {
-        homePage.login();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        HomePage homePageAfterLogin = homePage.login(this.email, this.password);
+        Assertions.assertTrue(homePageAfterLogin.isLogoutButtonDisplayed());
     }
 
 
