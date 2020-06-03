@@ -21,7 +21,8 @@ public class HomePage extends Page {
         wait.until(ExpectedConditions.visibilityOf(header));
     }
 
-    public void login() {
+    public LoginModal openUpLoginModal() {
         clickOn(loginBtn);
+        return new LoginModal(driver);
     }
 }
