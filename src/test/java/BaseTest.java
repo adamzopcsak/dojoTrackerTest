@@ -8,14 +8,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BaseTest {
 
-    protected String username;
+    protected String email;
     protected String password;
     protected ChromeDriver driver;
     protected HomePage homePage;
 
     @BeforeAll
     public void setupTestEnvironment() {
-        this.username = System.getenv("DOJOTRACKER_USERNAME");
+        this.email = System.getenv("DOJOTRACKER_EMAIL");
         this.password = System.getenv("DOJOTRACKER_PASSWORD");
     }
 
