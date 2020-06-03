@@ -3,8 +3,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.List;
 import java.util.Set;
 
 public class LoginModal extends Page {
@@ -28,7 +26,7 @@ public class LoginModal extends Page {
         writeToField(password, passwordInputField);
     }
 
-    public void login(String emailAddress, String password) {
+    public HomePage login(String emailAddress, String password) {
         Set<String> openedWindowsSet = driver.getWindowHandles();
         Object[] openedWindowsList = openedWindowsSet.toArray();
         driver.switchTo().window(openedWindowsList[getIndexOfLastElement(openedWindowsList)].toString());
@@ -40,8 +38,13 @@ public class LoginModal extends Page {
         WebElement passwordInputField = driver.findElement(passwordFieldLocator);
         fillPasswordField(password, passwordInputField);
         clickOn(nextBtn);
+
+        driver.switchTo().window("");
+        By logoutBtnLocator = By.id("logout-btn");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(logoutBtnLocator));
+        return new HomePage(driver);
     }
-    
+
     private int getIndexOfLastElement(Object[] array) {
         return array.length - 1;
     }
