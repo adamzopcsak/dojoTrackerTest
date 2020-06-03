@@ -15,7 +15,7 @@ public abstract class Page {
         this.driver = driver;
         int timeOutInSeconds = 4;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, timeOutInSeconds), this);
-        this.baseUrl = "https://www.track-that-dojo.herokuapp.com";
+        this.baseUrl = "https://track-that-dojo.herokuapp.com/";
         this.wait = new WebDriverWait(driver, timeOutInSeconds);
     }
 
@@ -25,6 +25,10 @@ public abstract class Page {
 
     public void navigateToHomePage() {
         driver.get(this.baseUrl);
+    }
+
+    public void writeToField(String text, WebElement field) {
+        field.sendKeys(text);
     }
 
 }
