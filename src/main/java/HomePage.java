@@ -11,6 +11,9 @@ public class HomePage extends Page {
     @FindBy(id = "login-btn")
     private WebElement loginBtn;
 
+    @FindBy(id = "logout-btn")
+    private WebElement logoutBtn;
+
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -21,8 +24,17 @@ public class HomePage extends Page {
         wait.until(ExpectedConditions.visibilityOf(header));
     }
 
-    public LoginModal openUpLoginModal() {
+    public HomePage login(String email, String password) {
+        LoginModal loginModal = openUpLoginModal();
+        return loginModal.login(email, password);
+    }
+
+    private LoginModal openUpLoginModal() {
         clickOn(loginBtn);
         return new LoginModal(driver);
+    }
+
+    public boolean isLogoutButtonDisplayed() {
+        return logoutBtn.isDisplayed();
     }
 }
