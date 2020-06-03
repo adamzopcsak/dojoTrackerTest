@@ -9,5 +9,15 @@ public class HomePageTest extends BaseTest {
         homePage.load();
     }
 
+    @Test
+    public void loginTest() {
+        homePage.login();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
