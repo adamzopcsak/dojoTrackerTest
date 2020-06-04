@@ -43,8 +43,19 @@ public class HomePage extends Page {
         return new LoginModal(driver);
     }
 
-
     boolean isLogoutButtonDisplayed() {
         return logoutBtn.isDisplayed();
+    }
+
+    void navigateToDojosPage() {
+        clickOn(dojosBtn);
+    }
+
+    void navigateToRankingPage() {
+        clickOn(rankingBtn);
+    }
+
+    void navigateToProfilePage() {
+        clickOn(profileBtn);
     }
 }
