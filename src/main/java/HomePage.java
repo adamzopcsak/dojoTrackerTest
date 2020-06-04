@@ -47,15 +47,18 @@ public class HomePage extends Page {
         return logoutBtn.isDisplayed();
     }
 
-    void navigateToDojosPage() {
+    DojosPage navigateToDojosPage() {
         clickOn(dojosBtn);
+        return new DojosPage(driver);
     }
 
-    void navigateToRankingPage() {
+    RankingPage navigateToRankingPage() {
         clickOn(rankingBtn);
+        return new RankingPage(driver);
     }
 
-    void navigateToProfilePage() {
+    ProfilePage navigateToProfilePage() {
         clickOn(profileBtn);
+        return new ProfilePage(driver);
     }
 }
