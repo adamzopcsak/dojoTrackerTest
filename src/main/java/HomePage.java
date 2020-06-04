@@ -14,6 +14,15 @@ public class HomePage extends Page {
     @FindBy(id = "logout-btn")
     private WebElement logoutBtn;
 
+    @FindBy(id = "dojo-link-nav")
+    private WebElement dojosBtn;
+
+    @FindBy(id = "ranking-link-nav")
+    private WebElement rankingBtn;
+
+    @FindBy(id = "profile-link-nav")
+    private WebElement profileBtn;
+
 
     public HomePage(WebDriver driver) {
         super(driver);
