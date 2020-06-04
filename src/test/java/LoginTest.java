@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class HomePageTest extends BaseTest {
+public class LoginTest extends BaseTest {
 
     @BeforeEach
     public void setup() {
