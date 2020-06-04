@@ -24,16 +24,16 @@ public class HomePage extends Page {
     private WebElement profileBtn;
 
 
-    public HomePage(WebDriver driver) {
+    HomePage(WebDriver driver) {
         super(driver);
     }
 
-    public void load() {
+    void load() {
         driver.get(baseUrl);
         wait.until(ExpectedConditions.visibilityOf(header));
     }
 
-    public HomePage login(String email, String password) {
+    HomePage login(String email, String password) {
         LoginModal loginModal = openUpLoginModal();
         return loginModal.login(email, password);
     }
@@ -43,7 +43,8 @@ public class HomePage extends Page {
         return new LoginModal(driver);
     }
 
-    public boolean isLogoutButtonDisplayed() {
+
+    boolean isLogoutButtonDisplayed() {
         return logoutBtn.isDisplayed();
     }
 }
