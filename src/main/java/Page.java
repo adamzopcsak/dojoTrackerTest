@@ -13,7 +13,7 @@ public abstract class Page {
 
     public Page(WebDriver driver) {
         this.driver = driver;
-        int timeOutInSeconds = 4;
+        int timeOutInSeconds = 30;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, timeOutInSeconds), this);
         this.baseUrl = "https://track-that-dojo.herokuapp.com/";
         this.wait = new WebDriverWait(driver, timeOutInSeconds);
