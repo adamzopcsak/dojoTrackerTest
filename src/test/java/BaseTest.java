@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BaseTest {
 
-    protected final boolean HEADLESS_MODE = false;
+    protected final boolean HEADLESS_MODE = true;
     protected String email;
     protected String password;
     protected ChromeDriver driver;
