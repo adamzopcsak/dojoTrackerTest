@@ -3,6 +3,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.Set;
+
 public class HomePage extends Page {
 
     @FindBy(tagName = "h1")
@@ -23,7 +25,6 @@ public class HomePage extends Page {
     @FindBy(id = "profile-link-nav")
     private WebElement profileBtn;
 
-
     HomePage(WebDriver driver) {
         super(driver);
     }
@@ -34,13 +35,19 @@ public class HomePage extends Page {
     }
 
     HomePage login(String email, String password) {
-        LoginModal loginModal = openUpLoginModal();
+        GoogleLoginPage loginModal = openUpLoginModal();
         return loginModal.login(email, password);
     }
 
-    private LoginModal openUpLoginModal() {
+    private GoogleLoginPage openUpLoginModal() {
+        wait.until(ExpectedConditions.elementToBeClickable(loginBtn));
         clickOn(loginBtn);
-        return new LoginModal(driver);
+        Object[] openedWindowsList = {};
+        while (openedWindowsList.length < 2) {
+            Set<String> openedWindowsSet = driver.getWindowHandles();
+            openedWindowsList = openedWindowsSet.toArray();
+        }
+        return new GoogleLoginPage(driver);
     }
 
     boolean isLogoutButtonDisplayed() {
