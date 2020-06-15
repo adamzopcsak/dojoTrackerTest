@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BaseTest {
 
-    protected final boolean HEADLESS = false;
+    protected final boolean HEADLESS_MODE = false;
     protected String email;
     protected String password;
     protected ChromeDriver driver;
@@ -25,7 +25,7 @@ public class BaseTest {
     public void initDriver() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        if (HEADLESS) {
+        if (HEADLESS_MODE) {
             options.addArguments("--window-size=1920,1080");
             options.addArguments("--headless");
             options.addArguments("--disable-popup-blocking");
