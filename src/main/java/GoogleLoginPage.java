@@ -1,11 +1,13 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.util.Set;
 
-public class LoginModal extends Page {
+public class GoogleLoginPage extends Page {
 
     @FindBy(css = "input[type='email']")
     private WebElement emailInputField;
@@ -13,9 +15,19 @@ public class LoginModal extends Page {
     @FindBy(css = "span[class='RveJvd snByac']")
     private WebElement nextBtn;
 
+    //Clicking on the login button in headless mode renders a different login form (Google) with different locators,
+    //so that is why these "next buttons" are needed
+    @FindBy(id = "next")
+    private WebElement nextBtn2;
 
-    public LoginModal(WebDriver driver) {
+    @FindBy(id = "submit")
+    private WebElement nextBtn3;
+
+    public GoogleLoginPage(WebDriver driver) {
         super(driver);
+        Set<String> openedWindowsSet = driver.getWindowHandles();
+        Object[] openedWindowsList = openedWindowsSet.toArray();
+        driver.switchTo().window(openedWindowsList[getIndexOfLastElement(openedWindowsList)].toString());
     }
 
     public void fillEmailField(String emailAddress) {
@@ -27,17 +39,22 @@ public class LoginModal extends Page {
     }
 
     public HomePage login(String emailAddress, String password) {
-        Set<String> openedWindowsSet = driver.getWindowHandles();
-        Object[] openedWindowsList = openedWindowsSet.toArray();
-        driver.switchTo().window(openedWindowsList[getIndexOfLastElement(openedWindowsList)].toString());
         fillEmailField(emailAddress);
-        clickOn(nextBtn);
+        try {
+            clickOn(nextBtn);
+        } catch (NoSuchElementException exception) {
+            clickOn(nextBtn2);
+        }
 
         By passwordFieldLocator = By.cssSelector("input[type='password']");
         wait.until(ExpectedConditions.visibilityOfElementLocated(passwordFieldLocator));
         WebElement passwordInputField = driver.findElement(passwordFieldLocator);
         fillPasswordField(password, passwordInputField);
-        clickOn(nextBtn);
+        try {
+            clickOn(nextBtn);
+        } catch (NoSuchElementException exception) {
+            clickOn(nextBtn3);
+        }
 
         driver.switchTo().window("");
         By logoutBtnLocator = By.id("logout-btn");
