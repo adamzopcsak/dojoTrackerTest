@@ -15,4 +15,16 @@ public class NavigationTest extends BaseTest {
         Assertions.assertFalse(dojosPage.isDojosListEmpty());
     }
 
+    @Test
+    public void navigateToRankingPage() {
+        RankingPage rankingPage = homePage.navigateToRankingPage();
+        Assertions.assertTrue(rankingPage.areUsersVisible());
+    }
+
+    @Test
+    public void navigateToProfilePage() {
+        ProfilePage profilePage = homePage.navigateToProfilePage();
+        Assertions.assertEquals("DojoTracker Student", profilePage.getUsername());
+    }
+
 }
