@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +23,7 @@ public abstract class Page {
     }
 
     public void clickOn(WebElement webElement) {
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
 

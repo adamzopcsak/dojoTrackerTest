@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,16 +27,16 @@ public class HomePage extends Page {
     @FindBy(id = "profile-link-nav")
     private WebElement profileBtn;
 
-    HomePage(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    void load() {
+    public void load() {
         driver.get(baseUrl);
         wait.until(ExpectedConditions.visibilityOf(header));
     }
 
-    HomePage login(String email, String password) {
+    public HomePage login(String email, String password) {
         GoogleLoginPage loginModal = openUpLoginModal();
         return loginModal.login(email, password);
     }
@@ -50,25 +52,25 @@ public class HomePage extends Page {
         return new GoogleLoginPage(driver);
     }
 
-    boolean isLogoutButtonDisplayed() {
+    public boolean isLogoutButtonDisplayed() {
         return logoutBtn.isDisplayed();
     }
 
-    boolean isSignInButtonDisplayed() {
+    public boolean isSignInButtonDisplayed() {
         return loginBtn.isDisplayed();
     }
 
-    DojosPage navigateToDojosPage() {
+    public DojosPage navigateToDojosPage() {
         clickOn(dojosBtn);
         return new DojosPage(driver);
     }
 
-    RankingPage navigateToRankingPage() {
+    public RankingPage navigateToRankingPage() {
         clickOn(rankingBtn);
         return new RankingPage(driver);
     }
 
-    ProfilePage navigateToProfilePage() {
+    public ProfilePage navigateToProfilePage() {
         clickOn(profileBtn);
         return new ProfilePage(driver);
     }

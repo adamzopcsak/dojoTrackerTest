@@ -1,7 +1,7 @@
 ## About the project
 
 This repository is about testing the website called DojoTracker (https://track-that-dojo.herokuapp.com) 
-in Page Object Model (POM), using AjaxElementLocatorFactory.
+in pages.Page Object Model (POM), using AjaxElementLocatorFactory.
 This site was developed by CodeCoolers as well. You can check out the repositories of the app here:
 
 Frontend: https://github.com/adamzopcsak/dojoTrackerFE
