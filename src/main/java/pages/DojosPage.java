@@ -1,6 +1,7 @@
 package pages;
 
 import exceptions.NoSuchDojoException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,7 +21,7 @@ public class DojosPage extends Page {
         return dojoCards.isEmpty();
     }
 
-    public void clickOnSpecificDojo(String dojoName) {
+    public SpecificDojoPage clickOnSpecificDojo(String dojoName) {
         WebElement currentDojo = null;
         try {
             currentDojo = getSpecificDojoByText(dojoName);
@@ -28,11 +29,13 @@ public class DojosPage extends Page {
             System.out.println(exception.getMessage());
         }
         clickOn(currentDojo);
+        return new SpecificDojoPage(driver);
     }
 
     private WebElement getSpecificDojoByText(String dojoName) throws NoSuchDojoException {
         for (WebElement dojoCard : dojoCards) {
-            if (dojoCard.getText().equals(dojoName)) {
+            String actualName = dojoCard.findElement(By.tagName("p")).getText();
+            if (actualName.equals(dojoName)) {
                 return dojoCard;
             }
         }
