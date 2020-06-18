@@ -30,7 +30,7 @@ public class BaseTest {
             options.addArguments("--headless");
         }
         options.addArguments("--disable-popup-blocking");
-//        options.addArguments("--incognito");
+        options.addArguments("--incognito");
         options.addArguments("--start-maximized");
         this.driver = new ChromeDriver(options);
         homePage = new HomePage(driver);
