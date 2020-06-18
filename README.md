@@ -7,9 +7,12 @@ This site was developed by CodeCoolers as well. You can check out the repositori
 Frontend: https://github.com/adamzopcsak/dojoTrackerFE
 Backend: https://github.com/adamzopcsak/dojoTrackerBE
 
+## Project size
+Solo.
+
 ## Dojo Tracker
 
-### Goals of the site:
+### Goals of the site
 
 Provide CodeCoolers with an App where they can:
 

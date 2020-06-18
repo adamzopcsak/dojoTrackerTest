@@ -1,7 +1,9 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
@@ -9,7 +11,6 @@ public abstract class Page {
     WebDriver driver;
     WebDriverWait wait;
     String baseUrl;
-    String urlExtension;
 
     public Page(WebDriver driver) {
         this.driver = driver;
@@ -31,4 +32,9 @@ public abstract class Page {
         field.sendKeys(text);
     }
 
+    public void logout() {
+        WebElement logoutBtn = driver.findElement(By.xpath("//div[@id='logout-btn']/div/button"));
+        wait.until(ExpectedConditions.elementToBeClickable(logoutBtn));
+        clickOn(logoutBtn);
+    }
 }

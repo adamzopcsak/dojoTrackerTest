@@ -54,6 +54,10 @@ public class HomePage extends Page {
         return logoutBtn.isDisplayed();
     }
 
+    boolean isSignInButtonDisplayed() {
+        return loginBtn.isDisplayed();
+    }
+
     DojosPage navigateToDojosPage() {
         clickOn(dojosBtn);
         return new DojosPage(driver);
