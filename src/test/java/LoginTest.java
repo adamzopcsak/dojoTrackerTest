@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pages.HomePage;
 
 public class LoginTest extends BaseTest {
 
